@@ -6,7 +6,7 @@ on:
 env:
   WORKFLOW_VAR: "I am a workflow var"
 
-  jobs: 
+jobs: 
     echos:
       runs-on: ubuntu-latest
       env: 
