@@ -41,7 +41,7 @@ jobs:
                 matrix_array+=('"Offroad"')
                 fi
                 matrix_json = "[${matrix_array[*]}]"
-                echo "matrix=$matrix_json" >> $GITHUB_OUTPUT
+                echo "matrix=${{ matrix_json }}" >> $GITHUB_OUTPUT
 
     build: 
         needs: set-matrix
