@@ -35,13 +35,14 @@ jobs:
               run: |
                 matrix_array=()
                 if [ ${{ inputs.Hunt }} ]; then
-                matrix_array+=('"Hunt"')
+                matrix_array+=("Hunt")
                 fi
                 if [ ${{ inputs.Offroad }} ]; then
-                matrix_array+=('"Offroad"')
+                matrix_array+=("Offroad")
                 fi
-                matrix_json = "[${matrix_array[*]}]"
-                echo "matrix=${{ matrix_json }}" >> $GITHUB_OUTPUT
+                matrix_json = $(printf '%s\n' "${matrix_array[@]}" | jq -R . | jq -s .)
+                #  "[${matrix_array[*]}]"
+                echo "matrix=$matrix_json" >> $GITHUB_OUTPUT
 
     build: 
         needs: set-matrix
