@@ -8,7 +8,7 @@ on:
         type: boolean 
         default: false
 
-      another: 
+      Offroad: 
         description: Offroad
         type: boolean 
         default: false
@@ -33,7 +33,7 @@ jobs:
         steps:
             - id: set_matrix
               run: |
-                matrix_array = ()
+                matrix_array=()
                 if [ ${{ inputs.Hunt }} ]; then
                 matrix_array+=('"Hunt"')
                 fi
