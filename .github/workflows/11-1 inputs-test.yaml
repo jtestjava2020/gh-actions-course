@@ -42,6 +42,8 @@ jobs:
                 fi
                 matrix_json=$(printf '%s\n' "${matrix_array[@]}" | jq -R . | jq -s .)
                 echo "matrix=$matrix_json" >> $GITHUB_OUTPUT
+            - name: Show matrix JSON
+              run: echo "${{ steps.set_matrix.outputs.matrix }}" 
 
     build: 
         needs: set-matrix
