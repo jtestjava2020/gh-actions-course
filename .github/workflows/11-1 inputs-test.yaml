@@ -36,9 +36,9 @@ jobs:
             - id: set_matrix
               run: |
                 matrix_array=()
-                # if [ ${{ inputs.Hunt }} ]; then
-                # matrix_array+=("Hunt")
-                # fi
+                if [ ${{ inputs.Hunt }} ]; then
+                matrix_array+=("Hunt")
+                fi
                 if [ ${{ inputs.Offroad }} ]; then
                 matrix_array+=("Offroad")
                 fi
