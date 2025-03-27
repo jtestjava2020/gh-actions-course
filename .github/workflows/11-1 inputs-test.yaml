@@ -42,7 +42,7 @@ jobs:
                 if [ ${{ inputs.Offroad }} ]; then
                 matrix_array+=("Offroad")
                 fi
-                if [#{matrix_array[@]} -eq 0]; then
+                if [ ${#matrix_array[@]} -eq 0 ]; then
                 matrix_array+=("Hunt" "Offroad")
                 fi
                 echo "Matrix Array: $matrix_array"
