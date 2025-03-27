@@ -45,7 +45,7 @@ jobs:
                 echo "Matrix Array: $matrix_array"
                 matrix_json=$(printf '%s\n' "${matrix_array[@]}" | jq -R . | jq -s -c .)
                 echo "Matrix Json: $matrix_json"
-                echo "matrix=$matrix_json || ["Hunt", "Offroad"]" >> "$GITHUB_OUTPUT"
+                echo "matrix=$matrix_json" >> "$GITHUB_OUTPUT"
             - name: Show matrix JSON
               run: echo "${{ steps.set_matrix.outputs.matrix }}" 
 
