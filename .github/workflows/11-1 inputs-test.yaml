@@ -35,16 +35,16 @@ jobs:
         steps:
             - id: set_matrix
               run: |
-                matrix_array=("Hunt", "Offroad")
+                matrix_array=()
                 # if [ ${{ inputs.Hunt }} ]; then
                 # matrix_array+=("Hunt")
                 # fi
-                if [ ${{ !inputs.Offroad }} ]; then
-                matrix_array-=("Offroad")
+                if [ ${{ inputs.Offroad }} ]; then
+                matrix_array+=("Offroad")
                 fi
                 matrix_json=$(printf '%s\n' "${matrix_array[@]}" | jq -R . | jq -s -c .)
                 echo "Matrix Json: $matrix_json"
-                echo "matrix=$matrix_json" >> "$GITHUB_OUTPUT"
+                echo "matrix=$matrix_json || [Hunt, Offroad]" >> "$GITHUB_OUTPUT"
             - name: Show matrix JSON
               run: echo "${{ steps.set_matrix.outputs.matrix }}" 
 
