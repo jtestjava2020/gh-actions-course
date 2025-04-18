@@ -1,0 +1,21 @@
+name: testing reading file
+
+on: 
+  push: 
+  workflow_dispatch: 
+
+jobs: 
+    echos:
+      runs-on: ubuntu-latest
+      outputs:
+        artifact-name: tes-output
+      steps:
+        - name: Create c.json
+          run: |
+            echo "{"testTargets": [ { "selectedTests" : [ "TTFMLTests\/testHardCoded()", "TTFMLTests\/testanotherHardCoded()"] } ]}" > C_durations.json
+
+        - name: Upload artifact
+          uses: actions/upload-artifact@v4
+          with:
+            name: C durations
+            path: C_durations.json
