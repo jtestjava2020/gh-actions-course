@@ -19,3 +19,11 @@ jobs:
           with:
             name: C durations
             path: C_durations.json
+    
+        - name: Read test cases
+          run: |
+            TESTPLAN_FILE="C_durations.json"
+            TEST_CASES=$(jq -r '.testTargets[].selectedTests[]' "$TESTPLAN_FILE")
+            echo "collected test cases:"
+            echo "test cases = $TEST_CASES"
+
