@@ -22,10 +22,10 @@ jobs:
     
         - name: Read test cases
           run: |
-            TEST_CASES=()
             TESTPLAN_FILE="C_durations.json"
             for line in $(jq -r '.testTargets[].selectedTests[]' "$TESTPLAN_FILE"); do
                 TEST_CASES+=("${line}")
+                echo "$line"
             done
             echo "collected test cases:"
             echo "test cases = $TEST_CASES"
