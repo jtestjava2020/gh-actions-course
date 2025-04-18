@@ -12,7 +12,7 @@ jobs:
       steps:
         - name: Create c.json
           run: |
-            echo "{"testTargets": [ { "selectedTests" : [ "TTFMLTests\/testHardCoded()", "TTFMLTests\/testanotherHardCoded()"] } ]}" > C_durations.json
+            echo '{"testTargets": [ { "selectedTests" : [ "TTFMLTests\/testHardCoded()", "TTFMLTests\/testanotherHardCoded()"] } ]}' > C_durations.json
 
         - name: Upload artifact
           uses: actions/upload-artifact@v4
