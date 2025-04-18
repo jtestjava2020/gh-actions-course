@@ -28,5 +28,5 @@ jobs:
                 echo "$line"
             done
             echo "collected test cases:"
-            echo "test cases = $TEST_CASES"
+            echo "test cases = ${TEST_CASES[@]}"
 
