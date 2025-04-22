@@ -1,5 +1,6 @@
-name: checking workflows - 1
+name: checking workflows - aggregate
 on:
+    push:
     workflow_run:
         workflows: ["workflowA", "workflowB","workflowC"]
         types: 
