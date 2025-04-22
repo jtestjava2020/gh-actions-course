@@ -14,7 +14,7 @@ jobs:
           - name: Download all artifacts
             uses: actions/download-artifact@v4
             with: 
-                path: ./durations
+                path: ./durations/
             
           - name: Extract map_load_time from artifacts
             run: |
