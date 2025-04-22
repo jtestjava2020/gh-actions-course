@@ -47,4 +47,10 @@ jobs:
                 name: Comment txt
                 path: comment.txt
 
-
+          - name: Cleanup 
+            if: always() 
+            run: |
+             if [[ -d "durations" ]]; then
+              rm -rf "durations"
+              echo "cleaned up"
+             fi 
