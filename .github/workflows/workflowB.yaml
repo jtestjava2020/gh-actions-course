@@ -1,4 +1,4 @@
-name: workflow B
+name: workflowB
 on:
     push:
     workflow_dispatch: 
@@ -9,13 +9,6 @@ jobs:
         outputs:
             artifact-name: tes-output
         steps:
-            - name: create durations dir
-              run: |
-                RES_DIR="./durations"
-                if [[ ! -d "$RES_DIR" ]]; then
-                  mkdir -p "$RES_DIR"
-                fi
-
             - name: Create b.json
               run: |
                 echo '{"data": { "platform" : "iOS", "flavor": "B", "metrics":[ {"metric_name": "mycontent_load_time", "duration": "2221 ms", "test-id": "testHardCoded"},{"metric_name": "map_load_time", "duration": "2222 ms", "test-id": "testHardCodedAgain"} ] } }' > B_durations.json
@@ -24,4 +17,4 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                 name: B durations
-                path: B_durations.json
+                path: ./durations/B_durations.json
