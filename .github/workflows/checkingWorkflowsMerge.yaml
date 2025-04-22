@@ -38,8 +38,8 @@ jobs:
                 for file in durations/*/*_durations.json; do
                     echo "$file"
                     cat "$file"
-                    flavor=$(jq -r '.flavor' "$file")
-                    duration=$(jq -r '.metrics[] | select(.metric_name == "map_load_time") | .duration' "$file")
+                    flavor=$(jq -r '.data.flavor' "$file")
+                    duration=$(jq -r '.data.metrics[] | select(.metric_name == "map_load_time") | .duration' "$file")
                     echo "- **$flavoor**: \'$duration\'" >> comment.txt
                 done
 
