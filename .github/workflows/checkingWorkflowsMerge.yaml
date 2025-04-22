@@ -21,7 +21,7 @@ jobs:
                 path: durations
 
           - name: list durations folder
-            run: ls -l durations
+            run: ls durations/
             
           - name: Extract map_load_time from artifacts
             run: |
