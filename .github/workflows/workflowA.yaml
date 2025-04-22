@@ -11,8 +11,8 @@ jobs:
             - name: create durations dir
               run: |
                RES_DIR="./durations"
-               if [[ ! -d "/durations" ]]; then
-                mkdir -p "/durations"
+               if [[ ! -d "./durations" ]]; then
+                mkdir -p "./durations"
                fi
 
             - name: Create a.json
