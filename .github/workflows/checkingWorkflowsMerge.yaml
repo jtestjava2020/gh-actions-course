@@ -11,13 +11,6 @@ jobs:
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
         runs-on: ubuntu-latest
         steps:
-          - name: create durations dir
-            run: |
-              RES_DIR="./durations"
-              if [[ ! -d "./durations" ]]; then
-                  mkdir -p "./durations"
-              fi
-          
           - name: Download all artifacts
             uses: actions/download-artifact@v4
             with: 
