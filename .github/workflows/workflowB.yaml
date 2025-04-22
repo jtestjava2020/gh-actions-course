@@ -1,0 +1,20 @@
+name: workflow B
+on:
+    push:
+    workflow_dispatch: 
+
+jobs: 
+    echos:
+        runs-on: ubuntu-latest
+        outputs:
+            artifact-name: tes-output
+        steps:
+            - name: Create b.json
+              run: |
+                echo '{"data": { "platform" : "iOS", "flavor": "B", "metrics":[ {"metric_name": "mycontent_load_time", "duration": "2221 ms", "test-id": "testHardCoded"},{"metric_name": "map_load_time", "duration": "2222 ms", "test-id": "testHardCodedAgain"} ] } }' > B_durations.json
+
+            - name: Upload artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: B durations
+                path: B_durations.json

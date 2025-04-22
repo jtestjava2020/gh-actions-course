@@ -13,8 +13,3 @@ jobs:
               run: |
                 echo '{"data": { "platform" : "iOS", "flavor": "A", "metrics":[ {"metric_name": "mycontent_load_time", "duration": "1234 ms", "test-id": "testHardCoded"},{"metric_name": "map_load_time", "duration": "3256 ms", "test-id": "testHardCodedAgain"} ] } }' > C_durations.json
 
-            - name: Upload artifact
-              uses: actions/upload-artifact@v4
-              with:
-                name: C durations
-                path: C_durations.json

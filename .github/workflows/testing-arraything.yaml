@@ -1,7 +1,6 @@
 name: testing reading file
 
-on: 
-  push: 
+on:
   workflow_dispatch: 
 
 jobs: 
