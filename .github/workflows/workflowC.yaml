@@ -17,7 +17,7 @@ jobs:
                fi
             - name: Create c.json
               run: |
-                echo '{"data": { "platform" : "iOS", "flavor": "C", "metrics":[ {"metric_name": "mycontent_load_time", "duration": "3331 ms", "test-id": "testHardCoded"},{"metric_name": "map_load_time", "duration": "3332 ms", "test-id": "testHardCodedAgain"} ] } }' > ./durations/C_durations.jso
+                echo '{"data": { "platform" : "iOS", "flavor": "C", "metrics":[ {"metric_name": "mycontent_load_time", "duration": "3331 ms", "test-id": "testHardCoded"},{"metric_name": "map_load_time", "duration": "3332 ms", "test-id": "testHardCodedAgain"} ] } }' > ./durations/C_durations.json
 
             - name: Upload artifact
               uses: actions/upload-artifact@v4
