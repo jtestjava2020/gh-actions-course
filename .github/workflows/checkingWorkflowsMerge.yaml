@@ -19,6 +19,9 @@ jobs:
             uses: actions/download-artifact@v4
             with: 
                 path: durations
+
+          - name: list durations folder
+            run: ls -l durations
             
           - name: Extract map_load_time from artifacts
             run: |
