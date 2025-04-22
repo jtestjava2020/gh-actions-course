@@ -36,8 +36,8 @@ jobs:
             run: |
                 echo "### map_load_time summary" > comment.txt
                 for file in durations/*/*_durations.json; do
-                    echo file
-                    cat file
+                    echo "$file"
+                    cat "$file"
                     flavor=$(jq -r '.flavor' "$file")
                     duration=$(jq -r '.metrics[] | select(.metric_name == "map_load_time") | .duration' "$file")
                     echo "- **$flavoor**: \'$duration\'" >> comment.txt
