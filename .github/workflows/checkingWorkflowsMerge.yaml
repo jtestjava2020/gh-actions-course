@@ -2,7 +2,7 @@ name: checking workflows - aggregate
 on:
     push:
     workflow_run:
-        workflows: ["workflowA", "workflowB","workflowC"]
+        workflows: ["workflowA", "workflowB", "workflowC"]
         types: 
             - completed 
 
@@ -14,7 +14,8 @@ jobs:
           - name: Download all artifacts
             uses: actions/download-artifact@v4
             with: 
-                path: ./durations/
+                name: ./durations/*.json
+                # path: ./durations/
             
           - name: Extract map_load_time from artifacts
             run: |
