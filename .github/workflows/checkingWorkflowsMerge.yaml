@@ -1,21 +1,24 @@
 name: checking workflows - aggregate
 on:
     push:
-    workflow_run:
-        workflows: ["workflowA"]
-        types: 
-            - completed 
 
 jobs: 
-    post-summary:
-        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    call-a: 
+        uses: ./.github/workflows/workflowA.yaml
+    call-b: 
+        uses: ./.github/workflows/workflowB.yaml
+    call-c: 
+        uses: ./.github/workflows/workflowC.yaml
+
+    aggregate:
+        needs: [call-a, call-b, call-c]
         runs-on: ubuntu-latest
         steps:
           - name: Download all artifacts
             uses: actions/download-artifact@v4
             with: 
-                name: ./durations/A_durations.json
-                # path: ./durations/
+                path: durations
             
           - name: Extract map_load_time from artifacts
             run: |

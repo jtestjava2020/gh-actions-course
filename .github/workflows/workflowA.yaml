@@ -1,7 +1,6 @@
 name: workflowA
 on:
-    push:
-    workflow_dispatch: 
+    workflow_call: 
 
 jobs: 
     echos:
@@ -25,4 +24,4 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                 name: A durations
-                path: ./durations/A_durations.json
+                path: durations/A_durations.json
