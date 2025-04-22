@@ -15,9 +15,9 @@ jobs:
         needs: [call-a, call-b, call-c]
         runs-on: ubuntu-latest
         steps:
-          - name: Download all artifact
-            run: |
-              rm ./durations
+        #   - name: Download all artifact
+        #     run: |
+        #       rm ./durations
           
           - name: Download all artifacts
             uses: actions/download-artifact@v4
