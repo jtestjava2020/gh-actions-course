@@ -35,7 +35,7 @@ jobs:
           - name: Extract map_load_time from artifacts
             run: |
                 echo "### map_load_time summary" > comment.txt
-                for file in durations/*_durations.json; do
+                for file in durations/*/*_durations.json; do
                     flavor=$(jq -r '.flavor' "$file")
                     duration=$(jq -r '.metrics[] | select(.metric_name == "map_load_time") | .duration' "$file")
                     echo "- **$flavoor**: \'$duration\'" >> comment.txt
