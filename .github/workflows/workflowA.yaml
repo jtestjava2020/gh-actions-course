@@ -9,12 +9,21 @@ jobs:
         outputs:
             artifact-name: tes-output
         steps:
+            - name: create durations dir
+              run: |
+                RES_DIR="./durations"
+                if [[ ! -d "$RES_DIR" ]]; then
+                    mkdir -p "$RES_DIR"
+                fi
+
             - name: Create a.json
               run: |
+                FILE="$"
                 echo '{"data": { "platform" : "iOS", "flavor": "A", "metrics":[ {"metric_name": "mycontent_load_time", "duration": "1111 ms", "test-id": "testHardCoded"},{"metric_name": "map_load_time", "duration": "1112 ms", "test-id": "testHardCodedAgain"} ] } }' > A_durations.json
+                mv A_durations.json ./durations/A_durations.json
 
             - name: Upload artifact
               uses: actions/upload-artifact@v4
               with:
                 name: A durations
-                path: A_durations.json
+                path: ./durations/A_durations.json

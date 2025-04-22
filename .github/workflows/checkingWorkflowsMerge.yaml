@@ -1,15 +1,33 @@
 name: checking workflows - 1
 on:
-    push:
-    workflow_dispatch: 
+    workflow_run:
+        workflows: ["workflowA", "workflowB","workflowC"]
+        types: 
+            - completed 
 
 jobs: 
-    echos:
+    post-summary:
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
         runs-on: ubuntu-latest
-        outputs:
-            artifact-name: tes-output
         steps:
-            - name: Create c.json
-              run: |
-                echo '{"data": { "platform" : "iOS", "flavor": "A", "metrics":[ {"metric_name": "mycontent_load_time", "duration": "1234 ms", "test-id": "testHardCoded"},{"metric_name": "map_load_time", "duration": "3256 ms", "test-id": "testHardCodedAgain"} ] } }' > C_durations.json
+          - name: Download all artifacts
+            uses: actions/download-artifact@v4
+            with: 
+                path: ./durations
+            
+          - name: Extract map_load_time from artifacts
+            run: |
+                echo "### map_load_time summary" > comment.txt
+                for file in ./durations/*.json; do
+                    flavor=$(jq -r '.data.flavor' "$file")
+                    duration=$(jq -r '.data.metrics[] | select(.metric_name == "map_load_time") | .duration' "$file")
+                    echo "- **$flavoor**: \'$duration\'" >> comment.txt
+                done
+
+          - name: Upload text file
+            uses: actions/upload-artifact@v4
+            with:
+                name: Comment txt
+                path: comment.txt
+
 
