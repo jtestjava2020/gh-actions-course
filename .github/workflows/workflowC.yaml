@@ -8,12 +8,12 @@ jobs:
         outputs:
             artifact-name: tes-output
         steps:
-            # - name: create durations dir
-            #   run: |
-            #    RES_DIR="./durations"
-            #    if [[ ! -d "./durations" ]]; then
-            #     mkdir -p "./durations"
-            #    fi
+            - name: create durations dir
+              run: |
+               RES_DIR="./durations"
+               if [[ ! -d "/durations" ]]; then
+                mkdir -p "/durations"
+               fi
             - name: Create c.json
               run: |
                 echo '{"data": { "platform" : "iOS", "flavor": "C", "metrics":[ {"metric_name": "mycontent_load_time", "duration": "3331 ms", "test-id": "testHardCoded"},{"metric_name": "map_load_time", "duration": "3332 ms", "test-id": "testHardCodedAgain"} ] } }' > durations/C_durations.json

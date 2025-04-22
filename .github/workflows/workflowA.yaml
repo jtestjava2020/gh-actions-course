@@ -8,12 +8,12 @@ jobs:
         outputs:
             artifact-name: tes-output
         steps:
-            # - name: create durations dir
-            #   run: |
-            #    RES_DIR="./durations"
-            #    if [[ ! -d "./durations" ]]; then
-            #     mkdir -p "./durations"
-            #    fi
+            - name: create durations dir
+              run: |
+               RES_DIR="./durations"
+               if [[ ! -d "/durations" ]]; then
+                mkdir -p "/durations"
+               fi
 
             - name: Create a.json
               run: |
