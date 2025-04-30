@@ -1,0 +1,16 @@
+name: Checking output from an action
+on: 
+    push:
+
+jobs: 
+    echos:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Say Hello
+              id: hello
+              uses: ./.github/actions/hello
+              with:
+                name: "World"
+            - name: Use Output
+              run: echo "${{ steps.hello.outputs.greeting }}"

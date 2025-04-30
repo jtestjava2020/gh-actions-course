@@ -1,0 +1,16 @@
+name: Hello Action
+description: Says Hello
+inputs:
+  name:
+    required: true
+    description: "Whos to greet"
+
+outputs:
+  greeting:
+    description: "The greeting meessage"
+runs:
+  using: "composite"
+  steps:
+    - id: greet
+      run: |
+          echo "greeting=Hello, ${{ inputs.name }}!" >> $GITHUB_OUTPUT 
