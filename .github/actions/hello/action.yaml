@@ -12,6 +12,6 @@ runs:
   using: "composite"
   steps:
     - id: greet
-      shell: bash --noprofile --norc -eo pipefall {0}
+      shell: bash --noprofile --norc -eo pipefail {0}
       run: |
           echo "greeting=Hello, ${{ inputs.name }}!" >> $GITHUB_OUTPUT 
