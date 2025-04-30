@@ -12,5 +12,6 @@ runs:
   using: "composite"
   steps:
     - id: greet
+      shell: bash
       run: |
           echo "greeting=Hello, ${{ inputs.name }}!" >> $GITHUB_OUTPUT 
